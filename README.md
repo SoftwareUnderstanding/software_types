@@ -3,6 +3,8 @@ Schema.org profile for software types
 
 Authors: Maarten van Gompel and Daniel Garijo
 
+Profile available at: https://w3id.org/software-types
+
 ## Why do we need a profile for software types?
 TO DO: Explain and mention the requirements
 
