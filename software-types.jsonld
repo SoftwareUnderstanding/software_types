@@ -1,6 +1,6 @@
 {
     "@context": {
-        "stype": "https://clariah.nl/schema/software-type#",
+        "stype": "https://w3id.org/software_types#",
         "schema": "http://schema.org/",
         "CommandLineApplication": { "@id": "stype:CommandLineApplication" },
         "DesktopApplication": { "@id": "stype:DesktopApplication" },
