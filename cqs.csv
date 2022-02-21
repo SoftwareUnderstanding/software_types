@@ -1,2 +1,10 @@
-id,competency question,added terms,rationale
-0,to do,todo,
+id,competency question,(added) terms,parent type,rationale
+1,Does the software provide a command line interface?,proposed:CommandLineApplication,schema:SoftwareApplication,Make ubiquitous software interface types explicit
+2,Does the software provide a desktop GUI interface?,proposed:DesktopApplication,schema:SoftwareApplication,Make ubiquitous software interface types explicit
+3,Does the software provide a mobile GUI interface?,schema:MobileApplication,schema:SoftwareApplication,exists
+4,Does the software provide a terminal-based interface?,proposed:TerminalApplication,schema:SoftwareApplication,Make ubiquitous software interface types explicit. This is distinct from CommandLineApplication as this offers an interactive text-based interface (e.g. mutt,vim,lynx etc)
+5,Does the software provide a videogame interface?,schema:VideoGame,schema:SoftwareApplication,exists
+6,Does the software provide a web application interface for human end-users (Web UI)?,schema:WebApplication,schema:SoftwareApplication,exists
+7,Does the software provide a web API interface for machines (Web UI)?,schema_pending:WebAPI,schema:SoftwareApplication,schema:Service (!! Can we propose it also subclasses schema:SoftwareApplication?),Proposed in https://github.com/schemaorg/schemaorg/issues/1423
+8,Does the software provide a library with an API interface (within the context of some programming language)?,schema:SoftwareLibrary,schema:SoftwareApplication,Make uniquitous software interface types explicit. This
+9,Does the software provide a background service with interface through which other applications can interact with it over network/socket?,schema:SoftwareDaemon,schema:SoftwareApplication,Make uniquitous software interface types explicit. This covers the more generic interface for any networked service (not necessarily web).
