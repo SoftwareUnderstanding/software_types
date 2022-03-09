@@ -2,16 +2,88 @@
     "@context": {
         "stype": "https://w3id.org/software-types#",
         "schema": "http://schema.org/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "CommandLineApplication": { "@id": "stype:CommandLineApplication" },
         "DesktopApplication": { "@id": "stype:DesktopApplication" },
         "TerminalApplication": { "@id": "stype:TerminalApplication" },
-        "SoftwareDaemon": { "@id": "stype:SoftwareDaemon" },
+        "ServerApplication": { "@id": "stype:ServerApplication" },
         "SoftwareImage": { "@id": "stype:SoftwareImage" },
         "SoftwarePackage": { "@id": "stype:SoftwarePackage" },
         "NotebookApplication": { "@id": "stype:NotebookApplication" },
         "executableName": { "@id": "stype:executableName" },
         "targetProduct": { "@id": "schema:targetProduct" },
         "hasSourceCode": { "@id": "schema:hasSourceCode" },
-        "WebAPI": { "@id": "schema:WebAPI" }
-    }
+        "WebAPI": { "@id": "schema:WebAPI" },
+        "SoftwareApplication": { "@id": "schema:SoftwareApplication" },
+        "subClassOf": { "@id": "rdfs:subClassOf" },
+        "label": { "@id": "rdfs:label" },
+        "Class": { "@id": "rdfs:Class" },
+        "comment": { "@id": "rdfs:comment" },
+        "Property": { "@id": "rdf:Property" }
+    },
+    "@graph": [
+        {
+            "@id": "CommandLineApplication",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Command-Line Application",
+            "comment": "A software application offering a command-line interface."
+        },
+        {
+            "@id": "DesktopApplication",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Desktop Application",
+            "comment": "A software application offering a graphical user interface on the desktop."
+        },
+        {
+            "@id": "TerminalApplication",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Terminal Application",
+            "comment": "A software application offering a terminal text-based user interface (e.g. ncurses)."
+        },
+        {
+            "@id": "ServerApplication",
+            "@type": "Class",
+            "subClassOf": "ServerApplication",
+            "label": "Server Application",
+            "comment": "A software application running as a daemon providing a service, either locally or over a network, running in the background."
+        },
+        {
+            "@id": "SoftwareLibrary",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Software Library",
+            "comment": "A software application offering an Application Programming Interface (API) for developers"
+        },
+        {
+            "@id": "SoftwareImage",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Software Image",
+            "comment": "A software application in the form of an image (such as a container image or virtual machine image), distributes the application along with its wider dependency context."
+        },
+        {
+            "@id": "SoftwarePackage",
+            "@type": "Class",
+            "subClassOf": "SoftwareApplication",
+            "label": "Software Package",
+            "comment": "A software application in the form of a package for any particular package manager, distributes the application but not its wider dependency context."
+        },
+        {
+            "@id": "NotebookApplication",
+            "@type": "Class",
+            "subClassOf": "WebApplication",
+            "label": "Notebook Application",
+            "comment": "A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story."
+        },
+        {
+            "@id": "executableName",
+            "@type": "Property",
+            "label": "Executable Name",
+            "comment": "The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module)."
+        }
+    ]
 }
