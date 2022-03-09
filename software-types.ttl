@@ -27,8 +27,8 @@ stype:TerminalApplication a rdfs:Class ;
     rdfs:comment "A software application offering a terminal text-based user interface (e.g. ncurses)." ;
     rdfs:subClassOf :SoftwareApplication .
 
-stype:SoftwareDaemon a rdfs:Class ;
-    rdfs:label "Software Daemon" ;
+stype:ServerApplication a rdfs:Class ;
+    rdfs:label "Server Application" ;
     :source <https://github.com/codemeta/codemeta/issues/271> ;
     rdfs:comment "A software application running as a daemon providing a service, either locally or over a network, running in the background." ;
     rdfs:subClassOf :SoftwareApplication .
