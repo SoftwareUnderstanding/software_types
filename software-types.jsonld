@@ -27,7 +27,7 @@
             "@id": "stype:CommandLineApplication",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
-            "label": "Command-Line Application",
+            "label": "Command-line Application",
             "comment": "A software application offering a command-line interface."
         },
         {
