@@ -24,63 +24,63 @@
     },
     "@graph": [
         {
-            "@id": "CommandLineApplication",
+            "@id": "stype:CommandLineApplication",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Command-Line Application",
             "comment": "A software application offering a command-line interface."
         },
         {
-            "@id": "DesktopApplication",
+            "@id": "stype:DesktopApplication",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Desktop Application",
             "comment": "A software application offering a graphical user interface on the desktop."
         },
         {
-            "@id": "TerminalApplication",
+            "@id": "stype:TerminalApplication",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Terminal Application",
             "comment": "A software application offering a terminal text-based user interface (e.g. ncurses)."
         },
         {
-            "@id": "ServerApplication",
+            "@id": "stype:ServerApplication",
             "@type": "Class",
             "subClassOf": "ServerApplication",
             "label": "Server Application",
             "comment": "A software application running as a daemon providing a service, either locally or over a network, running in the background."
         },
         {
-            "@id": "SoftwareLibrary",
+            "@id": "stype:SoftwareLibrary",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Software Library",
             "comment": "A software application offering an Application Programming Interface (API) for developers"
         },
         {
-            "@id": "SoftwareImage",
+            "@id": "stype:SoftwareImage",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Software Image",
             "comment": "A software application in the form of an image (such as a container image or virtual machine image), distributes the application along with its wider dependency context."
         },
         {
-            "@id": "SoftwarePackage",
+            "@id": "stype:SoftwarePackage",
             "@type": "Class",
             "subClassOf": "SoftwareApplication",
             "label": "Software Package",
             "comment": "A software application in the form of a package for any particular package manager, distributes the application but not its wider dependency context."
         },
         {
-            "@id": "NotebookApplication",
+            "@id": "stype:NotebookApplication",
             "@type": "Class",
             "subClassOf": "WebApplication",
             "label": "Notebook Application",
             "comment": "A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story."
         },
         {
-            "@id": "executableName",
+            "@id": "stype:executableName",
             "@type": "Property",
             "label": "Executable Name",
             "comment": "The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module)."
