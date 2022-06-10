@@ -144,8 +144,8 @@ proposed extension as formulated
 [here](https://github.com/schemaorg/schemaorg/issues/1423), nothing in there is
 defined by us.
 
-The link between `SoftwareSourceCode` and subclasses of `SoftwareApplication`,
-`WebAPI`, `WebPage` or `WebSite` is established using the `targetProduct`
+The link between `schema:SoftwareSourceCode` and subclasses of `schema:SoftwareApplication`,
+`schema:WebAPI`, `schema:WebPage` or `schema:WebSite` is established using the `schema:targetProduct`
 property. There is also a reverse property for this called
 ``codemeta:hasSourceCode`` (see discussion
 [here](https://github.com/codemeta/codemeta/pull/229)).
@@ -159,6 +159,86 @@ define a `executableName` property, shown in examples A and B. This is to
 be interpreted as the name of the executable within a certain undefined
 run-time context (e.g. an executable filename or name of an importable module).
 It should typically not contain any platform/runtime-specific extensions (``.exe``,``.so``,``.dll``,``.dylib``,``.py``, ``.sh``).
+
+### Consumes Data / Produces Data
+
+In addition to describing the type of the software, we define some vocabulary
+for allowing to describe the type of data that a certain software tool consumes
+(i.e. input) or produces (i.e. output). We focus only on high-level descriptions 
+and not how particular data can be offered to, or obtained from, the software.
+The aim is to have a simple yet powerful way to express input and output data 
+in software metadata.
+
+We introduce the ``consumesData`` and ``producesData`` properties in our
+profile. The domain of these properties is `schema:SoftwareApplication` (or any
+of its subclasses) or `schema:SoftwareSourceCode`, the former is preferred as
+it is more specific and combines nicely with our use of `schema:targetProduct`.
+The range of the properties is a `schema:CreativeWork` (or any subclass),
+offering a high degree of flexibility and re-use of existing schema.org properties for
+e.g. expressing content/encoding types, natural languages etc...
+
+Example C, describes software metadata for a fictitious speech recognition tool that takes an audio file and produces a textual transcription:
+
+```json
+{
+    "@context": [
+        "https://raw.githubusercontent.com/codemeta/codemeta/2.0/codemeta.jsonld",
+        "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
+        "https://w3id.org/software-types"
+    ],
+    "@type": "SoftwareSourceCode",
+    "name": "MySpeechRecognizer",
+    "codeRepository": "https://github.com/someuser/MySpeechRecognizer",
+    ...,
+    "targetProduct": [
+        {
+            "type": "CommandLineApplication",
+            "executableName": "transcribe",
+            "name": "My Speech Recognition Tool",
+            "runtimePlatform": "Linux"
+            "consumesData": {
+                "@type": "AudioObject",
+                "encodingFormat": "audio/mp3",
+                "inLanguage": {
+                     "@id": "https://iso639-3.sil.org/code/eng",
+                     "@type": "Language",
+                     "name": "English"
+                     "identifier": "eng",
+                }
+            },
+            "producesData": {
+                "@type": "TextDigitalDocument",
+                "encodingFormat": "text/plain",
+                "inLanguage": {
+                     "@id": "https://iso639-3.sil.org/code/eng",
+                     "@type": "Language",
+                     "name": "English"
+                     "identifier": "eng",
+                }
+            }
+        },
+    ]
+}
+```
+
+The two new properties may also be used directly on `SoftwareSourceCode`, but
+are simply interpreted less specific then (read as: *some undefined build
+target of the source code consumes/produces certain data*).
+
+The properties we introduce here are deliberately limited: We do not tie the
+data to any endpoints or parameters. We deliberately do not specify by what
+means exactly the data can be offered to or obtained from the software. Our aim
+is not to provide a full machine-parseable specification of the input and
+output requirements of the software here; that would be up to other more
+complex initiatives like [OpenAPI](https://www.openapis.org) or
+[HydraCG](http://www.hydra-cg.com/spec/latest/core/). We merely enrich the
+metadata description so that data expectations can be communicated to the
+end-user.
+
+In the data descriptions themselves, you can use any of the relevant properties
+already in schema.org. This already provides sufficient enough vocabulary to
+express data types, encoding formats, natural languages, possible licensing
+restrictions, etc...
 
 ## Implementations
 

@@ -12,6 +12,8 @@
         "SoftwarePackage": { "@id": "stype:SoftwarePackage" },
         "NotebookApplication": { "@id": "stype:NotebookApplication" },
         "executableName": { "@id": "stype:executableName" },
+        "producesData": { "@id": "stype:producesData" },
+        "consumesData": { "@id": "stype:consumesData" },
         "targetProduct": { "@id": "schema:targetProduct" },
         "hasSourceCode": { "@id": "schema:hasSourceCode" },
         "WebAPI": { "@id": "schema:WebAPI" },
@@ -84,6 +86,18 @@
             "@type": "Property",
             "label": "Executable Name",
             "comment": "The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module)."
+        },
+        {
+            "@id": "stype:consumesData",
+            "@type": "Property",
+            "label": "Consumes Data",
+            "comment": "Links to creative works that may be consumed by the software (i.e. act as input). The further properties and exact subtype of the creative work narrows the scope, acting like a template."
+        },
+        {
+            "@id": "stype:producesData",
+            "@type": "Property",
+            "label": "Produces Data",
+            "comment": "Links to creative works that may be produced by the software (i.e. act as output). The further properties and exact subtype of the creative work narrows the scope, acting like a template."
         }
     ]
 }
