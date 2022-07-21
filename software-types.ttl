@@ -83,7 +83,7 @@ stype:executableName a rdf:Property ;
     rdfs:comment "Source code of the software" .
 
 :WebApplication a rdfs:Class ;
-    rdfs:subClassOf stype:SoftwareDaemon .
+    rdfs:subClassOf stype:ServerApplication .
 
 # copied unchanged from earlier proposals:
 
