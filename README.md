@@ -1,29 +1,31 @@
 # Software Types
 
-Schema.org profile for software types, used for software metadata descriptions
+Schema.org profile for specifying software application types, used for software metadata descriptions.
 
-Authors: Maarten van Gompel and Daniel Garijo
+**Authors**: Maarten van Gompel and Daniel Garijo
 
-Profile available at: https://w3id.org/software-types
+**Profile available at**: [https://w3id.org/software-types](https://w3id.org/software-types)
+
+**Supported serializations**: JSON-LD (`application/ld+json`), Turtle (`text/turtle`) and HTML. See the code snippet below for an example on how to retrieve the profile in Turtle with a `curl` command:
+
+```
+curl -sH "accept:text/turtle" -L https://w3id.org/software-types
+```
 
 ## Introduction
 
-This profile offers additional vocabulary needed to describe software metadata.
-It specifically focuses on encoding the software type. It is meant to be used
-with schema.org and [codemeta](https://codemeta.github.io). We aim to introduce
+This profile describes vocabulary terms needed to describe the metadata of software application types (e.g., command line, desktop, software package, software library, etc.). The profile is meant to be used
+with [schema.org](https://schema.org/) and [codemeta](https://codemeta.github.io). Our goal is to introduce
 as little additional vocabulary as possible and only extend where schema.org
-and codemeta leave gaps.
+and codemeta leave representation gaps.
 
-## Why do we need a profile for software types?
+## Why do we need a schema.org profile for software types?
 
-A software application typically offers one or more interfaces through which
-users or machines can interact with it. This information is already partially
-available in schema.org as there are subtypes of ``schema:SoftwareApplication``
+Software applications are ubiquitous in our society, ranging simple desktop applications in personal desktops to packages, libraries or containers deployed in servers. In fact, schema.org partly acknoweldges the importance of software by having the term `schema:SoftwareApplication` as the target of `schema:SoftwareSourceCode`. This is because software applications typically offers one or more interfaces through which
+users or machines can interact with it. Schema.org includes popular types of ``schema:SoftwareApplication``
 like ``schema:WebApplication``, ``schema:MobileApplication``, and even
-``schema:VideoGame``. We recommend their usage and in the ``software_types``
-profile developed here attempt to fill the gaps and define further (sub)types
-such as command-line applications, desktops applications (GUIs) and programming
-libraries.
+``schema:VideoGame``. However, we find that schema.org subtypes for software applications are quite lacking when we look at them from a software development perspective. Here we attempt to fill the gaps and define further (sub)types
+such as command-line applications, desktops applications (GUIs) and programming libraries.
 
 This availability of explicit software interface type information allows for
 more accurate software metadata descriptions. Implementing these as types, in
@@ -33,18 +35,31 @@ refinements. A good example is the
 development which allows for descripting Web APIs, though not a subtype of
 ``schema:SoftwareApplication``.
 
+**Disclaimer**: this work aims to create a profile that may be incorportated into codemeta or schema.org. The profile has persistent identifiers, but, if standardized, the classes and properties defined here may be absorved into other intiatives.
+
+## Software types profile: Classes
+
 We define the following additional vocabulary to describe software based on
 interface type, most are a subclass of `schema:SoftwareApplication`.
 
 * ``CommandLineApplication`` - A software application offering a command-line interface
 * ``DesktopApplication`` - A software application offering a graphical user interface on the desktop
-* ``TerminalApplication`` - A software application offering a terminal text-based user interface (e.g. ncurses)
-* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers.
-* ``SoftwareImage`` - A software application in the form of an image (such as a container image or virtual machine image), distributes the application along with its wider dependency context.
-* ``SoftwarePackage`` - A software application in the form of a package for any particular package manager, distributes the application but not its wider dependency context.
 * ``NotebookApplication`` - A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story.
+* ``ServerApplication`` - A software application running as a daemon providing a service, either locally or over a network, running in the background.
+* ``SoftwareImage`` - A software application in the form of an image (such as a container image or virtual machine image) that distributes the application along with its wider dependency context.
+* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers.
+* ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
+* ``TerminalApplication`` - A software application offering a terminal text-based user interface (e.g. ncurses)
 
-## How are these software types used with codemeta?
+
+## Software types profile: Properties
+
+### Executable name
+The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module). Examples of this property are shown in the code snippets A and B. 
+
+It should typically not contain any platform/runtime-specific extensions (``.exe``,``.so``,``.dll``,``.dylib``,``.py``, ``.sh``).
+
+## How are software types terms used with codemeta?
 
 Codemeta, building upon schema.org, describes software metadata focused on the
 software's source code (`schema:SoftwareSourceCode`). We call the various
@@ -55,7 +70,7 @@ description to one or more target products (see discussion
 take one of the types defines in our profile, or one of the existing ones
 already in schema.org.
 
-Example A (JSON-LD):
+Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Widoco/) is both a command line application in Java (JAR), but also a library. In this case, the application does not have an executable name, as it is run from the command line as a JAR (`java-jar ...`)
 
 ```json
 {
@@ -65,27 +80,25 @@ Example A (JSON-LD):
         "https://w3id.org/software-types"
     ],
     "@type": "SoftwareSourceCode",
-    "name": "MyTool",
-    "codeRepository": "https://github.com/someuser/mytool",
+    "name": "WIDOCO",
+    "codeRepository": "https://github.com/dgarijo/Widoco",
     ...,
     "targetProduct": [
         {
             "type": "CommandLineApplication",
-            "executableName": "mytool",
-            "name": "MyTool",
+            "name": "WIDOCO 1.14.17",
             "runtimePlatform": "Linux"
         },
         {
             "type": "SoftwareLibrary",
-            "executableName": "libmytool",
-            "name": "MyTool Library",
+            "name": "WIDOCO 1.14.17",
             "runtimePlatform": "Linux"
         },
     ]
 }
 ```
 
-Example B:
+Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be run as a web service, online (note that example links are provided):
 
 ```json
 {
@@ -95,39 +108,39 @@ Example B:
         "https://w3id.org/software-types"
     ],
     "@type": "SoftwareSourceCode",
-    "name": "MyTool",
-    "codeRepository": "https://github.com/someuser/mytool",
+    "name": "Chowlk",
+    "codeRepository": "https://github.com/oeg-upm/Chowlk",
     ...,
     "targetProduct": [
         {
             "type": "WebApplication",
-            "executableName": "mytool-webapp",
+            "executableName": "chowlk-webapp",
             "provider": {
                 "@type": "Organization",
-                "name": "Some hosting party"
+                "name": "Ontology Engineering Group"
             }
-            "url": "https://somewhere.org/mytool-service"
+            "url": "https://example.org/chwolk-ws"
         },
         {
             "type": "WebAPI",
             "provider": {
                 "@type": "Organization",
-                "name": "Some hosting party"
+                "name": "Ontology Engineering Group"
             }
             "endpointUrl": {
                 "@type": "EntryPoint",
-                "url": "https://somewhere.org/mytool-service",
+                "url": "https://example.org/chowlk-service",
                 "contentType": "application/json"
             },
             "endpointDescription": {
                 {
                   "@type": "CreativeWork",
                   "encodingFormat": "application/json",
-                  "url": "https://somewhere.org/mytool-service/info?version=v1"
+                  "url": "https://example.org/chowlk-service/info?version=v1"
                 },
             },
             "conformsTo": "https://jsonapi.org/format/1.0/",
-            "documentation": "https://somewhere.org/mytool-service/docs",
+            "documentation": "https://example.org/chowlk-service/docs",
         },
     ]
 }
@@ -136,29 +149,18 @@ Example B:
 ## Software as a Service 
 
 The vocabulary we propose here allows to express a link between software
-metadata and instances of that software running as a service somewhere. In
-example B you see ``schema:WebAPI`` and ``schema:WebApplication`` used to
+metadata and instances of that software running as a service somewhere. Example B shows ``schema:WebAPI`` and ``schema:WebApplication`` used to
 describe instances of software as a service. We use ``schema:WebAPI`` with a
 proposed extension as formulated
 [here](https://webapi-discovery.github.io/rfcs/rfc0001.html) and discussed
-[here](https://github.com/schemaorg/schemaorg/issues/1423), nothing in there is
-defined by us.
+[here](https://github.com/schemaorg/schemaorg/issues/1423). These are **not** new properties proposed in this profile.
 
 The link between `SoftwareSourceCode` and subclasses of `SoftwareApplication`,
 `WebAPI`, `WebPage` or `WebSite` is established using the `targetProduct`
 property. There is also a reverse property for this called
 ``codemeta:hasSourceCode`` (see discussion
-[here](https://github.com/codemeta/codemeta/pull/229)).
+[here](https://github.com/codemeta/codemeta/pull/229)) that can be used in case of need.
 
-## Additional Properties
-
-### Executable name
-
-In order to explicitly encode the name of a certain software executable, we
-define a `executableName` property, shown in examples A and B. This is to
-be interpreted as the name of the executable within a certain undefined
-run-time context (e.g. an executable filename or name of an importable module).
-It should typically not contain any platform/runtime-specific extensions (``.exe``,``.so``,``.dll``,``.dylib``,``.py``, ``.sh``).
 
 ## Implementations
 
@@ -167,11 +169,15 @@ implemented in the following software:
 
 * [codemetapy](https://github.com/proycon/codemetapy) - Python library and command-line tool for converting to codemeta and creating/manipulating existing codemeta descriptions.
 * [codemeta-harvester](https://github.com/proycon/codemeta-harvester) - Automatically harvests and converts software metadata to codemeta
+* [somef](https://github.com/KnowledgeCaptureAndDiscovery/somef) ([work in progress](https://github.com/KnowledgeCaptureAndDiscovery/somef/issues/486)) - A Python package for automated software metadata extraction. 
+* [c2t](https://github.com/osoc-es/c2t) ([work in progress](https://github.com/osoc-es/c2t/issues/34)), a python package for converting software images into triples (extracting their dependencies)
 
-## Mapping existing work
+## Related approaches
 
-TODO: Explain how we map other work like cwl, hydra, doap, etc. Many works exist for similar purposes!
+Many vocabularies exist to describe software or its constituent parts, e.g., the [software description ontology](https://w3id.org/okn/o/sd/), [description of a project vocabulary](http://usefulinc.com/ns/doap#), [hydra](https://www.hydra-cg.com/spec/latest/core/) (for API description), the common workflow language (description of inputs and outputs of software components, etc.), etc.  Our proposed profile does not aim to redefine any new term related to software, but propose a lightweight profile that can be easily incorporated into schema.org or codemeta.
 
 ## Acknowledgement
 
 This work was indirectly and partially funded through the [CLARIAH-PLUS project](https://clariah.nl).
+
+This work has been supported by the Madrid Government (Comunidad de Madrid-Spain) under the Multiannual Agreement with Universidad Politécnica de Madrid in the line Support for R&D projects for Beatriz Galindo researchers, in the context of the V PRICIT (Regional Programme of Research and Technological Innovation)
