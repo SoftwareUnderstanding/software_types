@@ -42,12 +42,12 @@ development which allows for descripting Web APIs, though not a subtype of
 We define the following additional vocabulary to describe software based on
 interface type, most are a subclass of `schema:SoftwareApplication`.
 
-* ``CommandLineApplication`` - A software application offering a command-line interface as the primary means of interaction
-* ``DesktopApplication`` - A software application offering a graphical user interface on the desktop
+* ``CommandLineApplication`` - A software application offering a command-line interface as the primary means of interaction. Examples are popular tools like: ``grep``, ``sed``, ``git``
+* ``DesktopApplication`` - A software application offering a graphical user interface on the desktop. Examples are popular software like firefox, Microsoft Word, Facetime
 * ``NotebookApplication`` - A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story.
-* ``ServerApplication`` - A software application running as a daemon providing a service, either locally or over a network, running in the background.
+* ``ServerApplication`` - A software application running as a daemon providing a service, either locally or over a network, running in the background. Examples are software like nginx, MySQL, postfix
 * ``SoftwareImage`` - A software application in the form of an image (such as a container image or virtual machine image) that distributes the application along with its wider dependency context.
-* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers.
+* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers. Examples are software like openssl, libxml2, blas, huggingface transformers, python-requests.
 * ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
 * ``TerminalApplication`` - A software application offering a terminal text-based user interface (a type of GUI constrained to the terminal, examples are popular tools like vim, mutt, htop, tmux, ncmpcpp, mc)
 
