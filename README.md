@@ -55,9 +55,34 @@ interface type, most are a subclass of `schema:SoftwareApplication`.
 ## Software types profile: Properties
 
 ### Executable name
-The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module). Examples of this property are shown in the code snippets A and B. 
 
-It should typically not contain any platform/runtime-specific extensions (``.exe``,``.so``,``.dll``,``.dylib``,``.py``, ``.sh``).
+The name of the executable within a certain run-time context (e.g. an
+executable filename or name of an importable module). This documents on a
+fairly high level by what name software is invoked from a certain run-time
+context. The run-time context itself is turn loosely determined by properties
+such as ``schema:runtimePlatform`` and ``schema:operatingSystem``.
+
+We include this property to make a clear distinction between the human readable
+name of the software, and the identifier used in invocation of the software.
+The two may regularly differ with one being more verbose or have stricter
+casing than the other.
+
+Examples for this property are:
+
+* The name of the invoked executable as invoked from the command line
+* The name of the library as used in the linking stage for compiled languages
+* The highest-level name of the module as invoked in an ``import`` or ``include`` statement in languages such as Python, R, Perl, Java.
+* The name of the package as passed to a certain package manager (for ``SoftwarePackage``)
+* The name of the container as known to a certain container registry (for ``SoftwareImage``)
+
+Examples of this property are also shown in the code snippets A and B. 
+
+Note that the executable name should typically not contain any
+platform/runtime-specific extensions which may differ across systems
+(``.exe``,``.so``,``.dll``,``.dylib``). However, such extensions may be
+included if they are static over all possible systems and needed to invoke the
+software (``.jar``,``.sh``) and a necessary component in invoking the software
+from a specific context.
 
 ## How are software types terms used with codemeta?
 
