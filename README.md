@@ -42,14 +42,14 @@ development which allows for descripting Web APIs, though not a subtype of
 We define the following additional vocabulary to describe software based on
 interface type, most are a subclass of `schema:SoftwareApplication`.
 
-* ``CommandLineApplication`` - A software application offering a command-line interface
+* ``CommandLineApplication`` - A software application offering a command-line interface as the primary means of interaction
 * ``DesktopApplication`` - A software application offering a graphical user interface on the desktop
 * ``NotebookApplication`` - A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story.
 * ``ServerApplication`` - A software application running as a daemon providing a service, either locally or over a network, running in the background.
 * ``SoftwareImage`` - A software application in the form of an image (such as a container image or virtual machine image) that distributes the application along with its wider dependency context.
 * ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers.
 * ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
-* ``TerminalApplication`` - A software application offering a terminal text-based user interface (e.g. ncurses)
+* ``TerminalApplication`` - A software application offering a terminal text-based user interface (a type of GUI constrained to the terminal, examples are popular tools like vim, mutt, htop, tmux, ncmpcpp, mc)
 
 
 ## Software types profile: Properties
