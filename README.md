@@ -95,7 +95,7 @@ description to one or more target products (see discussion
 take one of the types defines in our profile, or one of the existing ones
 already in schema.org.
 
-Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Widoco/) is both a command line application in Java (JAR), but also a library. In this case, the application does not have an executable name, as it is run from the command line as a JAR (`java-jar ...`)
+Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Widoco/) is both a command line application in Java (JAR), but also a library:
 
 ```json
 {
@@ -106,17 +106,20 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
     ],
     "@type": "SoftwareSourceCode",
     "name": "WIDOCO",
+    "version": "1.14.17",
     "codeRepository": "https://github.com/dgarijo/Widoco",
     ...,
     "targetProduct": [
         {
             "type": "CommandLineApplication",
-            "name": "WIDOCO 1.14.17",
+            "name": "WIDOCO",
+            "executableName": "Widico-1.14.17-jar-with-dependencies.jar",
             "runtimePlatform": "Linux"
         },
         {
             "type": "SoftwareLibrary",
-            "name": "WIDOCO 1.14.17",
+            "executableName": "es.oeg.Widico",
+            "name": "WIDOCO",
             "runtimePlatform": "Linux"
         },
     ]
