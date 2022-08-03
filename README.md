@@ -113,12 +113,12 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
         {
             "type": "CommandLineApplication",
             "name": "WIDOCO",
-            "executableName": "Widico-1.14.17-jar-with-dependencies.jar",
+            "executableName": "Widoco-1.14.17-jar-with-dependencies.jar",
             "runtimePlatform": "Linux"
         },
         {
             "type": "SoftwareLibrary",
-            "executableName": "es.oeg.Widico",
+            "executableName": "es.oeg.Widoco",
             "name": "WIDOCO",
             "runtimePlatform": "Linux"
         },
