@@ -21,7 +21,7 @@ and codemeta leave representation gaps.
 
 ## Why do we need a schema.org profile for software types?
 
-Software applications are ubiquitous in our society, ranging simple desktop applications in personal desktops to packages, libraries or containers deployed in servers. In fact, schema.org partly acknoweldges the importance of software by having the term `schema:SoftwareApplication` as the target of `schema:SoftwareSourceCode`. This is because software applications typically offers one or more interfaces through which
+Software applications are ubiquitous in our society, ranging simple desktop applications in personal desktops to packages, libraries or containers deployed in servers. In fact, schema.org partly acknowledges the importance of software by having the term `schema:SoftwareApplication` as the target of `schema:SoftwareSourceCode`. This is because software applications typically offers one or more interfaces through which
 users or machines can interact with it. Schema.org includes popular types of ``schema:SoftwareApplication``
 like ``schema:WebApplication``, ``schema:MobileApplication``, and even
 ``schema:VideoGame``. However, we find that schema.org subtypes for software applications are quite lacking when we look at them from a software development perspective. Here we attempt to fill the gaps and define further (sub)types
@@ -32,10 +32,10 @@ more accurate software metadata descriptions. Implementing these as types, in
 line with what schema.org already does, allows for further type-specific
 refinements. A good example is the
 [WebAPI](https://github.com/schemaorg/schemaorg/issues/1423) type that is in
-development which allows for descripting Web APIs, though not a subtype of
+development which allows for describing Web APIs, though not a subtype of
 ``schema:SoftwareApplication``.
 
-**Disclaimer**: this work aims to create a profile that may be incorportated into codemeta or schema.org. The profile has persistent identifiers, but, if standardized, the classes and properties defined here may be absorved into other intiatives.
+**Disclaimer**: this work aims to create a profile that may be incorporated into codemeta or schema.org. The profile has persistent identifiers, but, if standardized, the classes and properties defined here may be absorbed into other initiatives.
 
 ## Software types profile: Classes
 
