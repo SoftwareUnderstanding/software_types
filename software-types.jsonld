@@ -83,7 +83,7 @@
             "@id": "stype:executableName",
             "@type": "Property",
             "label": "Executable Name",
-            "comment": "The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module)."
+            "comment": "Filename of the executable for the software application."
         }
     ]
 }
