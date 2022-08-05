@@ -204,6 +204,16 @@ implemented in the following software:
 
 Many vocabularies exist to describe software or its constituent parts, e.g., the [software description ontology](https://w3id.org/okn/o/sd/), [description of a project vocabulary](http://usefulinc.com/ns/doap#), [hydra](https://www.hydra-cg.com/spec/latest/core/) (for API description), the common workflow language (description of inputs and outputs of software components, etc.), etc.  Our proposed profile does not aim to redefine any new term related to software, but propose a lightweight profile that can be easily incorporated into schema.org or codemeta.
 
+## Real Examples
+
+You can consult the following projects as examples that make use of this profile:
+
+* [frog](https://github.com/LanguageMachines/frog/blob/master/codemeta.json)
+* [ucto](https://github.com/LanguageMachines/ucto/blob/master/codemeta.json)
+* [libfolia](https://github.com/LanguageMachines/libfolia/blob/master/codemeta.json)
+
+Furthermore, the [CLARIAH Tools Portal](https://tools.dev.clariah.nl/) is build on the aforementioned implementations and may offer further examples of codemeta that also incorporates this software application type profile.
+
 ## Acknowledgement
 
 This work was indirectly and partially funded through the [CLARIAH-PLUS project](https://clariah.nl).
