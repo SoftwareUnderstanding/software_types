@@ -39,17 +39,17 @@ development which allows for describing Web APIs, though not a subtype of
 
 ## Software types profile: Classes
 
-We define the following additional vocabulary to describe software based on
-interface type, most are a subclass of `schema:SoftwareApplication`.
+We define the following additional classes to describe software based on
+interface type. All proposed classes extend `schema:SoftwareApplication`.
 
-* ``CommandLineApplication`` - A software application offering a command-line interface as the primary means of interaction. Examples are popular tools like: ``grep``, ``sed``, ``git``
-* ``DesktopApplication`` - A software application offering a graphical user interface on the desktop. Examples are popular software like firefox, Microsoft Word, Facetime
+* ``CommandLineApplication`` - A software application requiring a command-line interface as the primary means of interaction. Examples are popular tools like: ``grep``, ``sed``, ``git``.
+* ``DesktopApplication`` - A software application requiring a desktop graphical user interface. Examples include popular software like Firefox, Microsoft Word, Facetime.
 * ``NotebookApplication`` - A web application in the form of a notebook (e.g. Jupyter Notebook, R Notebook) or data story.
 * ``ServerApplication`` - A software application running as a daemon providing a service, either locally or over a network, running in the background. Examples are software like nginx, MySQL, postfix
 * ``SoftwareImage`` - A software application in the form of an image (such as a container image or virtual machine image) that distributes the application along with its wider dependency context.
-* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers. Examples are software like openssl, libxml2, blas, huggingface transformers, python-requests.
+* ``SoftwareLibrary`` - A software application offering an Application Programming Interface (API) for developers. Examples include software like openssl, libxml2, blas, Huggingface transformers, python-requests.
 * ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
-* ``TerminalApplication`` - A software application offering a terminal text-based user interface (a type of GUI constrained to the terminal, examples are popular tools like vim, mutt, htop, tmux, ncmpcpp, mc)
+* ``TerminalApplication`` - A software application requiring an interactive terminal text-based user interface. Examples include popular tools like vim, mutt, htop, tmux, ncmpcpp, mc, etc.
 
 
 ## Software types profile: Properties
