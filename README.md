@@ -56,33 +56,19 @@ interface type, most are a subclass of `schema:SoftwareApplication`.
 
 ### Executable name
 
-The name of the executable within a certain run-time context (e.g. an
-executable filename or name of an importable module). This documents on a
-fairly high level by what name software is invoked from a certain run-time
-context. The run-time context itself is turn loosely determined by properties
-such as ``schema:runtimePlatform`` and ``schema:operatingSystem``.
+The base filename of the executable for the software application. It should not
+be a full path, nor should it contain any command-line parameters.
 
 We include this property to make a clear distinction between the human readable
-name of the software, and the identifier used in invocation of the software.
+name of the software, and the executable used in invocation of the software.
 The two may regularly differ with one being more verbose or have stricter
 casing than the other.
 
-Examples for this property are:
-
-* The name of the invoked executable as invoked from the command line
-* The name of the library as used in the linking stage for compiled languages
-* The highest-level name of the module as invoked in an ``import`` or ``include`` statement in languages such as Python, R, Perl, Java.
-* The name of the package as passed to a certain package manager (for ``SoftwarePackage``)
-* The name of the container as known to a certain container registry (for ``SoftwareImage``)
-
 Examples of this property are also shown in the code snippets A and B. 
 
-Note that the executable name should typically not contain any
-platform/runtime-specific extensions which may differ across systems
-(``.exe``,``.so``,``.dll``,``.dylib``). However, such extensions may be
-included if they are static over all possible systems and needed to invoke the
-software (``.jar``,``.sh``) and a necessary component in invoking the software
-from a specific context.
+It's recommended to either leave out any platform-specific extensions like
+``.exe`` if the executable differs across platforms, or to simply use the
+property multiple times to list all possible variants.
 
 ## How are software types terms used with codemeta?
 
@@ -118,7 +104,6 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
         },
         {
             "type": "SoftwareLibrary",
-            "executableName": "es.oeg.Widoco",
             "name": "WIDOCO",
             "runtimePlatform": "Linux"
         },
