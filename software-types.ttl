@@ -18,7 +18,7 @@ stype:CommandLineApplication a rdfs:Class ;
 stype:DesktopApplication a rdfs:Class ;
     rdfs:label "Desktop Application" ;
     :source <https://github.com/codemeta/codemeta/issues/271> ;
-    rdfs:comment "A software application offering a desktop graphical user interface." ;
+    rdfs:comment "A software application offering a graphical user interface on the deskop." ;
     rdfs:subClassOf :SoftwareApplication .
 
 stype:TerminalApplication a rdfs:Class ;
@@ -64,7 +64,7 @@ stype:executableName a rdf:Property ;
     :domainIncludes :SoftwareApplication , :SoftwareSourceCode ;
     :rangeIncludes :Text ;
     :source <https://github.com/codemeta/codemeta/issues/271> ;
-    rdfs:comment "The name of the executable within a certain run-time context (e.g. an executable filename or name of an importable module)." .
+    rdfs:comment: "Filename of the executable for the software application" .
 
 # the following already exist, but are extended:
 
