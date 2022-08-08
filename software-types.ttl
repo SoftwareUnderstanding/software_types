@@ -1,6 +1,7 @@
 @prefix : <https://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix stype: <https://w3id.org/software-types#> .
@@ -8,6 +9,22 @@
 # This is an extension for schema.org for linking SoftwareSourceCode, SoftwareApplication and services like WebAPI
 # all of the following are newly proposed as part of https://github.com/codemeta/codemeta/issues/271
 # and are eventually proposed upstream to schema.org (but that may take a while)
+
+#metadata
+<https://w3id.org/software-types> rdf:type owl:Ontology ;
+                            owl:versionIRI <https://w3id.org/software-types/1.0.0> ;
+                            <http://purl.org/dc/terms/abstract> "This profile describes vocabulary terms needed to describe the metadata of software application types (e.g., command line, desktop, software package, software library, etc.)"@en ;
+                            <http://purl.org/dc/elements/1.1/description> "This profile describes vocabulary terms needed to describe the metadata of software application types (e.g., command line, desktop, software package, software library, etc.)"@en ;
+                            <http://purl.org/dc/elements/1.1/title> "The Software Types ontology"@en ;
+                            <http://purl.org/dc/terms/created> "February 3rd, 2022"@en ;
+                            <http://purl.org/dc/terms/creator> "Maarten van Gompel"@en ,
+                                                               "Daniel Garijo"@en ;
+                            <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/2.0/> ;
+                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "stype"@en ;
+                            <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/software-types" ;
+                            <http://schema.org/citation> "Cite this vocabulary as: van Gompel, M and Garijo, D. The Software Types ontology 1.0.0."@en ;
+                            rdfs:comment "This profile describes vocabulary terms needed to describe the metadata of software application types (e.g., command line, desktop, software package, software library, etc.)"@en ;
+                            owl:versionInfo "1.0.0"@en .
 
 stype:CommandLineApplication a rdfs:Class ;
     rdfs:label "Command-Line Application" ;
