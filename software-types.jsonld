@@ -8,6 +8,7 @@
         "DesktopApplication": { "@id": "stype:DesktopApplication" },
         "TerminalApplication": { "@id": "stype:TerminalApplication" },
         "ServerApplication": { "@id": "stype:ServerApplication" },
+        "SoftwareLibrary": { "@id": "stype:SoftwareLibrary" },
         "SoftwareImage": { "@id": "stype:SoftwareImage" },
         "SoftwarePackage": { "@id": "stype:SoftwarePackage" },
         "NotebookApplication": { "@id": "stype:NotebookApplication" },
