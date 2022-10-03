@@ -6,7 +6,7 @@ Schema.org profile for specifying software application types, used for software 
 
 **Profile available at**: [https://w3id.org/software-types](https://w3id.org/software-types)
 
-**Supported serializations**: JSON-LD (`application/ld+json`), Turtle (`text/turtle`) and HTML. See the code snippet below for an example on how to retrieve the profile in Turtle with a `curl` command:
+**Supported serializations**: [JSON-LD](software-types.jsonld) (`application/ld+json`), [Turtle](software-types.ttl) (`text/turtle`) and HTML (this readme). See the code snippet below for an example on how to retrieve the profile in Turtle with a `curl` command:
 
 ```
 curl -sH "accept:text/turtle" -L https://w3id.org/software-types
