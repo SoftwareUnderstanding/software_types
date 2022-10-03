@@ -9,6 +9,23 @@
 # all of the following are newly proposed as part of https://github.com/codemeta/codemeta/issues/271
 # and are eventually proposed upstream to schema.org (but that may take a while)
 
+#metadata
+stype: rdf:type owl:Ontology ;
+                            owl:versionIRI <https://w3id.org/stype/1.0.0> ;
+                            <http://purl.org/dc/terms/abstract> "This profile describes vocabulary terms for specifying software application types, used for software metadata descriptions."@en ;
+                            <http://purl.org/dc/elements/1.1/description> "This profile describes vocabulary terms for specifying software application types, used for software metadata descriptions."@en ;
+                            <http://purl.org/dc/elements/1.1/title> "The Software Types ontology"@en ;
+                            <http://purl.org/dc/terms/created> "February 3rd, 2022"@en ;
+                            <http://purl.org/dc/terms/creator> "Maarten van Gompel"@en ,
+                                                               "Daniel Garijo"@en ;
+                            <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/2.0/> ;
+                            <http://purl.org/vocab/vann/preferredNamespacePrefix> "stype"@en ;
+                            <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/software-types#" ;
+                            <http://schema.org/citation> "Cite this vocabulary as: van Gompel, M and Garijo, D. The Software Input/Output Data ontology 1.0.0."@en ;
+                            rdfs:comment "This profile describes vocabulary terms for specifying software application types, used for software metadata descriptions."@en ;
+                            owl:versionInfo "1.0.0"@en .
+
+
 stype:CommandLineApplication a rdfs:Class ;
     rdfs:label "Command-Line Application" ;
     :source <https://github.com/codemeta/codemeta/issues/271> ;
