@@ -209,7 +209,3 @@ Many vocabularies exist to describe software or its constituent parts, e.g., the
 This work was indirectly and partially funded through the [CLARIAH-PLUS project](https://clariah.nl).
 
 This work has been supported by the Madrid Government (Comunidad de Madrid-Spain) under the Multiannual Agreement with Universidad Politécnica de Madrid in the line Support for R&D projects for Beatriz Galindo researchers, in the context of the V PRICIT (Regional Programme of Research and Technological Innovation)
-
-## Versions
-
-The development version of software types is what you will find in the root folder of this repository. Different stable versions can be found on the `releases` folder.
