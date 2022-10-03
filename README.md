@@ -12,6 +12,11 @@ Schema.org profile for specifying software application types, used for software 
 curl -sH "accept:text/turtle" -L https://w3id.org/software-types
 ```
 
+Different releases have their own version. For example:
+```
+curl -sH "accept:text/turtle" -L https://w3id.org/software-types/1.0.0/
+```
+
 ## Introduction
 
 This profile describes vocabulary terms needed to describe the metadata of software application types (e.g., command line, desktop, software package, software library, etc.). The profile is meant to be used
