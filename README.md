@@ -56,6 +56,15 @@ interface type. All proposed classes extend `schema:SoftwareApplication`.
 * ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
 * ``TerminalApplication`` - A software application requiring an interactive terminal text-based user interface. Examples include popular tools like vim, mutt, htop, tmux, ncmpcpp, mc, etc.
 
+Note that the following existing schema.org types are already available for you without needing our extension. Descriptions in *italics* are our own clarifications:
+
+* `schema:WebApplication` - Web applications - *A software application offered through the browser*
+* `schema:MobileApplication` - A software application designed specifically to work well on a mobile device such as a telephone. 
+* `schema:VideoGame` - A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
+
+Though not a subclass of `SoftwareApplication` unlike all the others, the following existing class can be used for webservices:
+
+* `schema:WebAPI` - An application programming interface accessible over Web/Internet technologies
 
 ## Software types profile: Properties
 
