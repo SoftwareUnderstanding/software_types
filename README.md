@@ -87,20 +87,20 @@ property multiple times to list all possible variants.
 ## How are software types terms used with codemeta?
 
 Codemeta, building upon schema.org, describes software metadata focused on the
-software's source code (`schema:SoftwareSourceCode`). We call the various
-artefacts that can be produced by the source code **target products** and use
-use the existing `schema:targetProduct` property to link the source code
-description to one or more target products (see discussion
+software's source code (`schema:SoftwareSourceCode`). We various artefacts that 
+can be produced by the source code are linked to it using the  `codemeta:isSourceCodeOf` property (see discussion
 [here](https://github.com/codemeta/codemeta/issues/267)). These target products
 take one of the types defines in our profile, or one of the existing ones
 already in schema.org.
+
+**Note:** In Codemeta v2, we used the `schema:targetProduct` property for this because `codemeta:isSourceCodeOf` wasn't introduced yet before v3.
 
 Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Widoco/) is both a command line application in Java (JAR), but also a library:
 
 ```json
 {
     "@context": [
-        "https://raw.githubusercontent.com/codemeta/codemeta/2.0/codemeta.jsonld",
+        "https://w3id.org/codemeta/v3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
@@ -109,7 +109,7 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
     "version": "1.14.17",
     "codeRepository": "https://github.com/dgarijo/Widoco",
     ...,
-    "targetProduct": [
+    "isSourceCodeOf": [
         {
             "type": "CommandLineApplication",
             "name": "WIDOCO",
@@ -130,7 +130,7 @@ Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be
 ```json
 {
     "@context": [
-        "https://raw.githubusercontent.com/codemeta/codemeta/2.0/codemeta.jsonld",
+        "https://w3id.org/codemeta/v3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
@@ -138,7 +138,7 @@ Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be
     "name": "Chowlk",
     "codeRepository": "https://github.com/oeg-upm/Chowlk",
     ...,
-    "targetProduct": [
+    "isSourceCodeOf": [
         {
             "type": "WebApplication",
             "executableName": "chowlk-webapp",
@@ -183,7 +183,7 @@ proposed extension as formulated
 [here](https://github.com/schemaorg/schemaorg/issues/1423). These are **not** new properties proposed in this profile.
 
 The link between `SoftwareSourceCode` and subclasses of `SoftwareApplication`,
-`WebAPI`, `WebPage` or `WebSite` is established using the `targetProduct`
+`WebAPI`, `WebPage` or `WebSite` is established using the `isSourceCodeOf`
 property. There is also a reverse property for this called
 ``codemeta:hasSourceCode`` (see discussion
 [here](https://github.com/codemeta/codemeta/pull/229)) that can be used in case of need.
