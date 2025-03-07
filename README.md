@@ -100,7 +100,7 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
 ```json
 {
     "@context": [
-        "https://w3id.org/codemeta/v3.0",
+        "https://w3id.org/codemeta/3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
@@ -130,7 +130,7 @@ Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be
 ```json
 {
     "@context": [
-        "https://w3id.org/codemeta/v3.0",
+        "https://w3id.org/codemeta/3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
