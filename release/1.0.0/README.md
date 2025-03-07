@@ -6,10 +6,15 @@ Schema.org profile for specifying software application types, used for software 
 
 **Profile available at**: [https://w3id.org/software-types](https://w3id.org/software-types)
 
-**Supported serializations**: [JSON-LD](https://softwareUnderstanding.github.io/software_types/release/1.0.0/software-types.jsonld) (`application/ld+json`), [Turtle](https://softwareUnderstanding.github.io/software_types/release/1.0.0/software-types.ttl) (`text/turtle`) and [HTML](https://softwareunderstanding.github.io/software_types/release/1.0.0/). See the code snippet below for an example on how to retrieve the profile in Turtle with a `curl` command:
+**Supported serializations**: [JSON-LD](software-types.jsonld) (`application/ld+json`), [Turtle](software-types.ttl) (`text/turtle`) and HTML (this readme). See the code snippet below for an example on how to retrieve the profile in Turtle with a `curl` command:
 
 ```
 curl -sH "accept:text/turtle" -L https://w3id.org/software-types
+```
+
+Different releases have their own version. For example:
+```
+curl -sH "accept:text/turtle" -L https://w3id.org/software-types/1.0.0/
 ```
 
 ## Introduction
@@ -51,56 +56,51 @@ interface type. All proposed classes extend `schema:SoftwareApplication`.
 * ``SoftwarePackage`` - A software application in the form of a package for any particular package manager. It distributes the application but not necessarily its wider dependency context.
 * ``TerminalApplication`` - A software application requiring an interactive terminal text-based user interface. Examples include popular tools like vim, mutt, htop, tmux, ncmpcpp, mc, etc.
 
+Note that the following existing schema.org types are already available for you without needing our extension. Descriptions in *italics* are our own clarifications:
+
+* `schema:WebApplication` - Web applications - *A software application offered through the browser*
+* `schema:MobileApplication` - A software application designed specifically to work well on a mobile device such as a telephone. 
+* `schema:VideoGame` - A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
+
+Though not a subclass of `SoftwareApplication` unlike all the others, the following existing class can be used for webservices:
+
+* `schema:WebAPI` - An application programming interface accessible over Web/Internet technologies
 
 ## Software types profile: Properties
 
 ### Executable name
 
-The name of the executable within a certain run-time context (e.g. an
-executable filename or name of an importable module). This documents on a
-fairly high level by what name software is invoked from a certain run-time
-context. The run-time context itself is turn loosely determined by properties
-such as ``schema:runtimePlatform`` and ``schema:operatingSystem``.
+The base filename of the executable for the software application. It should not
+be a full path, nor should it contain any command-line parameters.
 
 We include this property to make a clear distinction between the human readable
-name of the software, and the identifier used in invocation of the software.
+name of the software, and the executable used in invocation of the software.
 The two may regularly differ with one being more verbose or have stricter
 casing than the other.
 
-Examples for this property are:
-
-* The name of the invoked executable as invoked from the command line
-* The name of the library as used in the linking stage for compiled languages
-* The highest-level name of the module as invoked in an ``import`` or ``include`` statement in languages such as Python, R, Perl, Java.
-* The name of the package as passed to a certain package manager (for ``SoftwarePackage``)
-* The name of the container as known to a certain container registry (for ``SoftwareImage``)
-
 Examples of this property are also shown in the code snippets A and B. 
 
-Note that the executable name should typically not contain any
-platform/runtime-specific extensions which may differ across systems
-(``.exe``,``.so``,``.dll``,``.dylib``). However, such extensions may be
-included if they are static over all possible systems and needed to invoke the
-software (``.jar``,``.sh``) and a necessary component in invoking the software
-from a specific context.
+It's recommended to either leave out any platform-specific extensions like
+``.exe`` if the executable differs across platforms, or to simply use the
+property multiple times to list all possible variants.
 
 ## How are software types terms used with codemeta?
 
 Codemeta, building upon schema.org, describes software metadata focused on the
-software's source code (`schema:SoftwareSourceCode`). We call the various
-artefacts that can be produced by the source code **target products** and use
-use the existing `schema:targetProduct` property to link the source code
-description to one or more target products (see discussion
+software's source code (`schema:SoftwareSourceCode`). We various artefacts that 
+can be produced by the source code are linked to it using the  `codemeta:isSourceCodeOf` property (see discussion
 [here](https://github.com/codemeta/codemeta/issues/267)). These target products
 take one of the types defines in our profile, or one of the existing ones
 already in schema.org.
+
+**Note:** In Codemeta v2, we used the `schema:targetProduct` property for this because `codemeta:isSourceCodeOf` wasn't introduced yet before v3.
 
 Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Widoco/) is both a command line application in Java (JAR), but also a library:
 
 ```json
 {
     "@context": [
-        "https://raw.githubusercontent.com/codemeta/codemeta/2.0/codemeta.jsonld",
+        "https://w3id.org/codemeta/v3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
@@ -109,7 +109,7 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
     "version": "1.14.17",
     "codeRepository": "https://github.com/dgarijo/Widoco",
     ...,
-    "targetProduct": [
+    "isSourceCodeOf": [
         {
             "type": "CommandLineApplication",
             "name": "WIDOCO",
@@ -118,7 +118,6 @@ Example A (JSON-LD): An application named [WIDOCO](https://github.com/dgarijo/Wi
         },
         {
             "type": "SoftwareLibrary",
-            "executableName": "es.oeg.Widoco",
             "name": "WIDOCO",
             "runtimePlatform": "Linux"
         },
@@ -131,7 +130,7 @@ Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be
 ```json
 {
     "@context": [
-        "https://raw.githubusercontent.com/codemeta/codemeta/2.0/codemeta.jsonld",
+        "https://w3id.org/codemeta/v3.0",
         "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/13.0/schemaorgcontext.jsonld",
         "https://w3id.org/software-types"
     ],
@@ -139,7 +138,7 @@ Example B: A python package ([Chowlk](https://github.com/oeg-upm/Chowlk)) can be
     "name": "Chowlk",
     "codeRepository": "https://github.com/oeg-upm/Chowlk",
     ...,
-    "targetProduct": [
+    "isSourceCodeOf": [
         {
             "type": "WebApplication",
             "executableName": "chowlk-webapp",
@@ -184,7 +183,7 @@ proposed extension as formulated
 [here](https://github.com/schemaorg/schemaorg/issues/1423). These are **not** new properties proposed in this profile.
 
 The link between `SoftwareSourceCode` and subclasses of `SoftwareApplication`,
-`WebAPI`, `WebPage` or `WebSite` is established using the `targetProduct`
+`WebAPI`, `WebPage` or `WebSite` is established using the `isSourceCodeOf`
 property. There is also a reverse property for this called
 ``codemeta:hasSourceCode`` (see discussion
 [here](https://github.com/codemeta/codemeta/pull/229)) that can be used in case of need.
@@ -204,8 +203,22 @@ implemented in the following software:
 
 Many vocabularies exist to describe software or its constituent parts, e.g., the [software description ontology](https://w3id.org/okn/o/sd/), [description of a project vocabulary](http://usefulinc.com/ns/doap#), [hydra](https://www.hydra-cg.com/spec/latest/core/) (for API description), the common workflow language (description of inputs and outputs of software components, etc.), etc.  Our proposed profile does not aim to redefine any new term related to software, but propose a lightweight profile that can be easily incorporated into schema.org or codemeta.
 
+## Real Examples
+
+You can consult the following projects as examples that make use of this profile:
+
+* [frog](https://github.com/LanguageMachines/frog/blob/master/codemeta.json)
+* [ucto](https://github.com/LanguageMachines/ucto/blob/master/codemeta.json)
+* [libfolia](https://github.com/LanguageMachines/libfolia/blob/master/codemeta.json)
+
+Furthermore, the [CLARIAH Tools Portal](https://tools.dev.clariah.nl/) is build on the aforementioned implementations and may offer further examples of codemeta that also incorporates this software application type profile.
+
 ## Acknowledgement
 
 This work was indirectly and partially funded through the [CLARIAH-PLUS project](https://clariah.nl).
 
 This work has been supported by the Madrid Government (Comunidad de Madrid-Spain) under the Multiannual Agreement with Universidad Politécnica de Madrid in the line Support for R&D projects for Beatriz Galindo researchers, in the context of the V PRICIT (Regional Programme of Research and Technological Innovation)
+
+## Versions
+
+The development version of software types is what you will find in the root folder of this repository. Different stable versions can be found on the `releases` folder.
