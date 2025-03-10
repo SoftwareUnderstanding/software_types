@@ -96,7 +96,7 @@ stype:executableName a rdf:Property ;
     rdfs:label "hasSourceCode" ;
     :domainIncludes :SoftwareApplication , :WebAPI ;
     :rangeIncludes :SoftwareSourceCode ;
-    :source <https://github.com/schemaorg/schemaorg/issues/1032>
+    :source <https://github.com/schemaorg/schemaorg/issues/1032> ;
     rdfs:comment "Source code of the software" .
 
 :WebApplication a rdfs:Class ;
